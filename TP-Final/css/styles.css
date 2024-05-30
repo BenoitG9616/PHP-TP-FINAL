@@ -1,0 +1,37 @@
+/*CSS Navigation */
+nav{
+    font-family: Arial, sans-serif;
+    text-align: left;
+    background-color: black;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 0;
+ }
+ nav a{
+    color: white;
+    text-decoration: none;
+    padding: 1em;
+    display: inline-block;
+ }
+ nav a:hover{
+    color: #17709c;
+    background-color: #e3e5e6;
+    border-radius: 5px;
+ }
+ nav a.active:hover{
+    color: #17709c;
+    background-color: #e3e5e6;
+    border-radius: 5px;
+ }
+ nav a.active{
+    background-color: #17709c;
+    border-radius: 5px;
+ }
+
+ .table-hidden {
+   display: none;
+}
+
+.table-visible {
+   display: table;
+}
