@@ -12,6 +12,11 @@
     
     N.B. IL NE FAUT PAS MODIFIER LA STRUCTURE DE CES TABLEAUX. Vous pouvez toutefois ajouter des étudiant.e.s à votre guise.
 
+	TP1 - 15% | TP2 - 35% | Examen Final 50%
+
+	array 1 = code permanent (id student)
+	array 2 = first name - last name - tutoring status (yes/no), age, tp1 result, tp2 result & examen final result.
+
 */
 
 
