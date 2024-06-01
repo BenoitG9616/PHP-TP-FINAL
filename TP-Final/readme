@@ -1,0 +1,47 @@
+Done
+a) Menu (1 point) 
+Le site doit contenir un menu très simple pointant vers les trois sections du site, soit : la page d’affichage des notes
+par travail, la page d’affichage des notes finales et la page de recherche des notes d’un étudiant.
+---
+Started 
+1st select for which group
+2nd select for which assignement to show (TP1 - TP2 or Exam).
+return first name-last name of every student + result for selected assignement | Also must do median of results
+b) Page d’affichage des notes par travail (3 points)
+La page d’affichage des notes par travail présentera un formulaire.
+Ce formulaire contiendra un premier select permettant de choisir le groupe duquel on voudra afficher les notes (soit
+groupe 1, soit groupe 2).
+Un second select permettra de choisir de quel travail on désire afficher les notes (soit travail 1, travail 2 ou examen
+final).
+Les résultats seront affichés dans une table HTML, présentant ainsi le prénom et le nom de chaque étudiant du
+groupe ainsi que sa note dans le travail en question.
+La page devra aussi afficher la moyenne des notes affichées.
+---
+Work in progress
+1st select for which group
+1 checkbox to only see students who are failing 
+1 radio button to show only students with tutoring or without tutoring or both
+Table must only show final result as calculated in Fonctions (function calculeNoteFinale) with first+last name & tutoring status (yes/no)
+median of results 
+c) Page d’affichage des notes finales (2 points)
+La page d’affichage des notes finales présentera elle aussi un formulaire.
+Ce formulaire contiendra un premier select permettant de choisir le groupe duquel on voudra afficher les notes (soit
+groupe 1, soit groupe 2, soit les deux groupes).
+Un checkbox permettra de choisir si l’on veut seulement afficher les notes finales des étudiants qui sont en situation d’échec.
+Un radio button permettra de choisir si l’on veut afficher seulement les étudiant.e.s qui ont eu du mentorat,
+seulement les étudiant.e.s qui n’ont pas eu de mentorat, ou les deux.
+Les résultats seront affichés dans une table HTML, présentant ainsi le prénom et le nom de chaque étudiant du
+groupe, son statut de mentorat (« oui » ou « non »), ainsi que sa note finale calculée à partir des notes de chacun de
+ses travaux à l’aide d’une fonction que vous devez développer (la pondération est expliquée dans les fichiers en
+annexe).
+La page devra aussi afficher la moyenne des notes affichées.
+---
+Started
+d) Page de recherche des notes d’un étudiant (2 points)
+La page de recherche des notes d’un étudiant contient un formulaire offrant une boite de texte permettant d’entrer
+un code permanent d’étudiant.
+Si l’usager entre un code de format valide et que l’étudiant existe, son prénom, son nom, son statut de mentorat et
+ses notes par travail ainsi que sa note finale sera affichée.
+Si l’usager entre un code de format invalide (validé par une expression régulière), il obtiendra un message d’erreur
+lui spécifiant le format correct.
+Si l’usager entre un code de format valide mais que l’étudiant n’existe pas, l’usager en sera informé.
