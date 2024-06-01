@@ -19,28 +19,34 @@
     <h1>Notes des Étudiants</h1>
     <form method="post">
         <label for="groupe">Choisir le groupe:</label>
-        <select name="groupe" id="groupe" onchange="this.form.submit()">
+        <select name="groupe" id="groupe">
             <option value="Aucun">Sélectionner...</option>
             <option value="Both">Les Deux Groupes</option>
             <option value="Groupe 1" >Groupe 1</option>
             <option value="Groupe 2" >Groupe 2</option>
         </select>
         <fieldset>
-        <legend>Options</legend>
-                    <label>Echec
-                        <input type="checkbox" name="echec">
-                    </label>
-        </fieldset>
-        <legend>Mentorat</legend>
+        <legend>Echec</legend>
                     <label>Oui
-                        <input type="checkbox" name="mentorat-oui">
+                        <input type="radio" name="echec" value="oui" >
                     </label>
                     <label>Non
-                        <input type="checkbox" name="mentorat-non">
+                        <input type="radio" name="echec" value="non">
+                    </label>
+        </fieldset>
+        <fieldset>
+        <legend>Mentorat</legend>
+                    <label>Oui
+                        <input type="radio" name="mentorat" value="oui" >
+                    </label>
+                    <label>Non
+                        <input type="radio" name="mentorat" value="non" >
                     </label>
                     <label>Les Deux
-                        <input type="checkbox" name="mentorat-both">
+                        <input type="radio" name="mentorat" value="both" >
                     </label>
+        </fieldset>
+        <button type="submit">Soumettre</button>
     </form>
 
     <?php 
@@ -48,18 +54,46 @@
     include 'Donnees.php';
 
     $groupeSelectionne = isset($_POST['groupe']) ? $_POST['groupe'] : 'Aucun';
-
+    $echecChecked = isset($_POST['echec']) && $_POST['echec'] == 'oui';
+    $mentoratSelectionne = isset($_POST['mentorat']) ? $_POST['mentorat'] : '';
+    
     if ($groupeSelectionne == 'Aucun') {
         echo "<p>Erreur - aucun groupe choisi</p>";
-    } elseif ($groupeSelectionne == 'Groupe 1') {
-        // Call the function and echo the result
-        echo showTableGroupe1($NotesGroupe1);
-    } elseif ($groupeSelectionne == 'Groupe 2') {
-        // Call the function and echo the result
-        echo showTableGroupe2($NotesGroupe2);
-    } elseif ($groupeSelectionne == 'Both') {
-        echo showTableGroupe1($NotesGroupe1);
-        echo showTableGroupe2($NotesGroupe2);
+    } else {
+        $notes = [];
+    
+        if ($groupeSelectionne == 'Groupe 1') {
+            $notes = $NotesGroupe1;
+        } elseif ($groupeSelectionne == 'Groupe 2') {
+            $notes = $NotesGroupe2;
+        } elseif ($groupeSelectionne == 'Both') {
+            $notes = array_merge($NotesGroupe1, $NotesGroupe2);
+        }
+    
+        if ($echecChecked) {
+            $notes = array_filter($notes, function($note) {
+                return $note['note'] < 60;
+            });
+        }
+    
+        if ($mentoratSelectionne == 'mentorat-oui') {
+            $notes = array_filter($notes, function($note) {
+                return $note['mentorat'] == 'oui';
+            });
+        } elseif ($mentoratSelectionne == 'mentorat-non') {
+            $notes = array_filter($notes, function($note) {
+                return $note['mentorat'] == 'non';
+            });
+        }
+    
+        if ($groupeSelectionne == 'Groupe 1') {
+            echo showTableGroupe1($notes);
+        } elseif ($groupeSelectionne == 'Groupe 2') {
+            echo showTableGroupe2($notes);
+        } elseif ($groupeSelectionne == 'Both') {
+            echo showTableGroupe1($NotesGroupe1);
+            echo showTableGroupe2($NotesGroupe2);
+        }
     }
     ?>
 </body>
